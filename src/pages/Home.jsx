@@ -9,13 +9,25 @@ export const Home = () => {
   const obtenerContactos = async () => {
     try {
       const respuesta = await fetch("https://playground.4geeks.com/contact/agendas/daniela-agenda");
+      if(!respuesta.ok) {
+        await crearAgenda()
+        obtenerContactos()
+      }
       const datos = await respuesta.json();
-      dispatch({ type: "CARGAR_CONTACTOS", payload: datos.contacts });
+     dispatch({ type: "CARGAR_CONTACTOS", payload: datos.contacts });
+     console.log(respuesta)
     } catch (error) {
       alert("Error cargando contactos");
     }
   };
 console.log (store.contactos)
+
+const crearAgenda = async () => {
+  const response = await fetch ("https://playground.4geeks.com/contact/agendas/daniela-agenda", {
+    method: "POST"
+  })
+}
+
 
 const eliminarContacto = async (id) => {
     const confirmar = window.confirm("¿Eliminar este contacto?");

@@ -1,5 +1,5 @@
 export const initialState = {
-      contactos: [] // ahora usamos contactos, no todos
+      contactos: [] 
 };
 
 export const reducer = (state, action) => {

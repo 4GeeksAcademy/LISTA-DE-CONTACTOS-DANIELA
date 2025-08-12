@@ -17,15 +17,14 @@ export const AgregarContacto = () => {
   const enviarFormulario = async (e) => {
     e.preventDefault();
     const nuevoContacto = {
-      full_name: datos.nombre_completo,
+      name: datos.nombre_completo,
       email: datos.correo,
       phone: datos.telefono,
       address: datos.direccion,
-      agenda_slug: "daniela-agenda"
     };
 
     try {
-      const resp = await fetch("https://playground.4geeks.com/apis/fake/contact/", {
+      const resp = await fetch("https://playground.4geeks.com/contact/agendas/daniela-agenda/contacts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(nuevoContacto)

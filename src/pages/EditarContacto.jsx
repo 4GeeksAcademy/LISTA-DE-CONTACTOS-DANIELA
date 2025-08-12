@@ -41,7 +41,7 @@ nombre_completo: data.full_name,
       email: datos.correo,
       phone: datos.telefono,
       address: datos.direccion,
-      agenda_slug: "ismain-agenda"
+      agenda_slug: "daniela-agenda"
     };
  try {
       const respuesta = await fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, {
