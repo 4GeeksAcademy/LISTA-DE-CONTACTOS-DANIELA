@@ -15,7 +15,7 @@ export const EditarContacto = () => {
   useEffect(() => {
     const obtenerContacto = async () => {
       try {
- const respuesta = await fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`);
+ const respuesta = await fetch(`https://playground.4geeks.com/contact/agendas/daniela/contacts/${id}`);
         if (!respuesta.ok) throw new Error("No se pudo cargar el contacto");
         const data = await respuesta.json();
         setDatos({
@@ -44,7 +44,7 @@ nombre_completo: data.full_name,
       agenda_slug: "daniela-agenda"
     };
  try {
-      const respuesta = await fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, {
+      const respuesta = await fetch(`https://playground.4geeks.com/contact/agendas/daniela/contacts/${id}`, {
 method: "PUT",
         headers: {
           "Content-Type": "application/json"

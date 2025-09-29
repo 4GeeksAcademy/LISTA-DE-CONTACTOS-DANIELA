@@ -24,7 +24,7 @@ export const AgregarContacto = () => {
     };
 
     try {
-      const resp = await fetch("https://playground.4geeks.com/contact/agendas/daniela-agenda/contacts", {
+      const resp = await fetch("https://playground.4geeks.com/contact/agendas/daniela/contacts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(nuevoContacto)
