@@ -1,36 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const EditarContacto = () => {
   const navegar = useNavigate();
   const { id } = useParams();
+  
+  const {store, dispatch} = useGlobalReducer()
+  
+  const contact = store.contactos.find(contact => contact.id == id )
 
    const [datos, setDatos] = useState({
-    nombre_completo: "",
-    correo: "",
-    telefono: "",
-    direccion: ""
+    nombre_completo: contact.name,
+    correo: contact.email,
+    telefono: contact.phone,
+    direccion: contact.address
   });
 
-  useEffect(() => {
-    const obtenerContacto = async () => {
-      try {
- const respuesta = await fetch(`https://playground.4geeks.com/contact/agendas/daniela/contacts/${id}`);
-        if (!respuesta.ok) throw new Error("No se pudo cargar el contacto");
-        const data = await respuesta.json();
-        setDatos({
-nombre_completo: data.full_name,
-          correo: data.email,
-          telefono: data.phone,
-          direccion: data.address
-        });
-      } catch (error) {
-        console.error(error);
-        alert("Error al cargar el contacto");
-      }
-    };
- obtenerContacto();
-  }, [id]);
+  console.log(contact.name)
+  
+
  const manejarCambio = (evento) => {
     setDatos({ ...datos, [evento.target.name]: evento.target.value });
   };
@@ -40,8 +29,7 @@ nombre_completo: data.full_name,
       full_name: datos.nombre_completo,
       email: datos.correo,
       phone: datos.telefono,
-      address: datos.direccion,
-      agenda_slug: "daniela-agenda"
+      address: datos.direccion
     };
  try {
       const respuesta = await fetch(`https://playground.4geeks.com/contact/agendas/daniela/contacts/${id}`, {
