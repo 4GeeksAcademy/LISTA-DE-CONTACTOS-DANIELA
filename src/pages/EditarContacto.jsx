@@ -26,7 +26,7 @@ export const EditarContacto = () => {
    const manejarEnvio = async (evento) => {
     evento.preventDefault();
      const contactoActualizado = {
-      full_name: datos.nombre_completo,
+      name: datos.nombre_completo,
       email: datos.correo,
       phone: datos.telefono,
       address: datos.direccion
